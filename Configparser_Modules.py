@@ -81,3 +81,37 @@ def Rename_Section( filename , section_from, section_to):
 			file.truncate() 
 	except NoSectionError:
 		return "There is no section to change."
+
+def Find_Section( filename , str_inside_of_section):
+	"""
+	example :
+	there is a config file like:
+
+	Section of Account-1
+	username = blabla
+	password = blabla
+
+	Section of Account-2
+	username = blabla
+	password = blabla
+
+	Section of General Settings
+	setting1 = ....
+	....
+
+	when you use that function like that :
+	Find_Section( "database.ini" , "Account" )
+	its going to return section names of accounts in list like that:
+	[ "Section of Account-1" , "Section of Account-2"]
+	it is searching keyword in section titles and if match it returns that section name
+    """
+	section_list = []
+	try:
+		with open(filename) as file:
+			cfg.read_file(file)
+			for section in cfg.sections():
+				if section.find(str_inside_of_section)!=-1:
+					section_list.append(section)
+		return section_list
+	except :
+		return "There is no section to find."
