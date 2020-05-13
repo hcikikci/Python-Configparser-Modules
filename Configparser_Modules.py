@@ -19,9 +19,9 @@ def Add_Section( filename , section , **kwargs ):
 			cfg.write(file)
 			file.truncate() 
 	except DuplicateSectionError:
-		print("That section is already exist.")
+		return "That section is already exist."
 	except DuplicateOptionError :
-		print("That option is already exist.")
+		return "That option is already exist."
 
 def Delete_Section( filename , section ):
 	"""
@@ -37,7 +37,7 @@ def Delete_Section( filename , section ):
 			cfg.write(file)
 			file.truncate() 
 	except NoSectionError:
-		print("There is no section to change.")
+		return "There is no section to change."
 
 def Upgrade_Option( filename , section , **kwargs ) :
 	"""
@@ -55,9 +55,9 @@ def Upgrade_Option( filename , section , **kwargs ) :
 			cfg.write(file)
 			file.truncate() 
 	except NoOptionError:
-		print("There is no option to change.")
+		return "There is no option to change."
 	except NoSectionError:
-		print("There is no section to change.")
+		return "There is no section to change."
 
 def Rename_Section( filename , section_from, section_to):
 	"""
@@ -80,4 +80,4 @@ def Rename_Section( filename , section_from, section_to):
 			cfg.write(file)
 			file.truncate() 
 	except NoSectionError:
-		print("There is no section to change.")
+		return "There is no section to change."
