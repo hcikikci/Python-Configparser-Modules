@@ -7,7 +7,7 @@ def Add_Section( filename , section , **kwargs ):
 	example :
 	Add_Section( database.ini , "Settings" , username = qweqwe23 , password = 123456 , setting_2 = True ,  ..... )
 	kwarg : option = value
-    """
+    	"""
 	try:
 		with open(filename , 'r+') as file:
 			cfg.read_file(file)
@@ -27,7 +27,7 @@ def Delete_Section( filename , section ):
 	"""
 	example :
 	Delete_Section( "database.ini" , "Settings" )
-    """
+    	"""
 	try:
 		with open(filename , 'r+') as file:
 			cfg.read_file(file)
@@ -44,7 +44,7 @@ def Upgrade_Option( filename , section , **kwargs ) :
 	example :
 	Upgrade_Section( database.ini , "Settings" , username = qweqwe23 , password = 123456 , setting_2 = True ,  ..... )
 	kwarg : option = value
-    """
+    	"""
 	try:
 		with open(filename , 'r+') as file:
 			cfg.read_file(file)
