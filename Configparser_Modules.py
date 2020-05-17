@@ -39,10 +39,10 @@ def Delete_Section( filename , section ):
 	except NoSectionError:
 		return "There is no section to change."
 
-def Upgrade_Option( filename , section , **kwargs ) :
+def Update_Option( filename , section , **kwargs ) :
 	"""
 	example :
-	Upgrade_Section( database.ini , "Settings" , username = qweqwe23 , password = 123456 , setting_2 = True ,  ..... )
+	Update_Option( database.ini , "Settings" , username = qweqwe23 , password = 123456 , setting_2 = True ,  ..... )
 	kwarg : option = value
     	"""
 	try:
@@ -115,3 +115,20 @@ def Find_Section( filename , str_inside_of_section):
 		return section_list
 	except :
 		return "There is no section to find."
+
+def Get_Value( filename , section , *args):
+	"""
+	example :
+	Get_Value( database.ini , "Settings" , "username" , "password" )
+    """
+	values = []
+	try:
+		with open(filename) as file:
+			cfg.read_file(file)
+			for option in args:
+				values.append(cfg.get(section , option))
+		return tuple(values)
+	except NoOptionError:
+		return "There is no option to change."
+	except NoSectionError:
+		return "There is no section to change."
